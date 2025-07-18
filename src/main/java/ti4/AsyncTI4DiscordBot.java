@@ -98,12 +98,12 @@ public class AsyncTI4DiscordBot {
 
     public static void main(String[] args) {
         // guildPrimaryID must be set before initializing listeners that use webhook logging
-        userID = args[1];
-        guildPrimaryID = args[2];
+        userID = System.getenv("USER");
+        guildPrimaryID = System.getenv("SERVER");
 
         GlobalSettings.loadSettings();
         GlobalSettings.setSetting(ImplementedSettings.READY_TO_RECEIVE_COMMANDS, false);
-        jda = JDABuilder.createDefault(args[0])
+        jda = JDABuilder.createDefault(System.getenv("BOT_KEY"))
             // This is a privileged gateway intent that is used to update user information and join/leaves (including kicks).
             // This is required to cache all members of a guild (including chunking)
             .enableIntents(GatewayIntent.GUILD_MEMBERS)
@@ -144,7 +144,7 @@ public class AsyncTI4DiscordBot {
         BotLogger.info("# `" + new Timestamp(System.currentTimeMillis()) + "`  BOT IS STARTING UP");
 
         // Primary HUB Server
-        guildPrimary = jda.getGuildById(args[2]);
+        guildPrimary = jda.getGuildById(System.getenv("SERVER"));
         boolean success = startBot(guildPrimary);
 
         // Community Plays TI
@@ -371,7 +371,11 @@ public class AsyncTI4DiscordBot {
     private static void initializeWhitelistedRoles() {
         //ADMIN ROLES
 
-        adminRoles.add(jda.getRoleById("943596173896323072")); // Async Primary (Hub)
+        String[] adminRolesSplit = System.getenv("ADMIN_ROLES").split(",");
+        for (String role : adminRolesSplit){
+            adminRoles.add(jda.getRoleById(role));
+        }
+        /*adminRoles.add(jda.getRoleById("943596173896323072")); // Async Primary (Hub)
         adminRoles.add(jda.getRoleById("1090914497352446042")); // Async Secondary (Stroter's Paradise)
         adminRoles.add(jda.getRoleById("1146511484264906814")); // Async Tertiary (Dreadn't)
         adminRoles.add(jda.getRoleById("1176104225978204167")); // Async Quaternary (War Sun Tzu)
@@ -398,13 +402,17 @@ public class AsyncTI4DiscordBot {
         adminRoles.add(jda.getRoleById("1313965793532186725")); // ppups's Server
         adminRoles.add(jda.getRoleById("1311111853912358922")); // TSI's Server
         adminRoles.add(jda.getRoleById("1368344911103000728")); // gozer's server (marshmallow manosphere)
-        adminRoles.add(jda.getRoleById("1378475691531567185")); // Hadouken's Server
+        adminRoles.add(jda.getRoleById("1378475691531567185")); // Hadouken's Server*/
         adminRoles.removeIf(Objects::isNull);
 
         //DEVELOPER ROLES
 
         developerRoles.addAll(adminRoles); //admins may also execute developer commands
-        developerRoles.add(jda.getRoleById("947648366056185897")); // Async Primary (Hub)
+        String[] devRolesSplit = System.getenv("DEVELOPER_ROLES").split(",");
+        for (String role : adminRolesSplit){
+            developerRoles.add(jda.getRoleById(role));
+        }
+        /*developerRoles.add(jda.getRoleById("947648366056185897")); // Async Primary (Hub)
         developerRoles.add(jda.getRoleById("1090958278479052820")); // Async Secondary (Stroter's Paradise)
         developerRoles.add(jda.getRoleById("1146529125184581733")); // Async Tertiary (Dreadn't)
         developerRoles.add(jda.getRoleById("1176104225978204166")); // Async Quaternary (War Sun Tzu)
@@ -421,13 +429,17 @@ public class AsyncTI4DiscordBot {
         developerRoles.add(jda.getRoleById("1313966002551128166")); // ppups's Server
         developerRoles.add(jda.getRoleById("1311111944832553090")); // TSI's Server
         developerRoles.add(jda.getRoleById("1368344979579338762")); // gozer's server (marshmallow manosphere)
-        developerRoles.add(jda.getRoleById("1378475796301217792")); // Hadouken's Server
+        developerRoles.add(jda.getRoleById("1378475796301217792")); // Hadouken's Server*/
         developerRoles.removeIf(Objects::isNull);
 
         //BOTHELPER ROLES
 
         bothelperRoles.addAll(adminRoles); //admins can also execute bothelper commands
-        bothelperRoles.add(jda.getRoleById("1166011604488425482")); // Async Primary (Hub)
+        String[] bothelperRolesSplit = System.getenv("BOTHELPER_ROLES").split(",");
+        for (String role : adminRolesSplit){
+            bothelperRoles.add(jda.getRoleById(role));
+        }
+        /*bothelperRoles.add(jda.getRoleById("1166011604488425482")); // Async Primary (Hub)
         bothelperRoles.add(jda.getRoleById("1090914992301281341")); // Async Secondary (Stroter's Paradise)
         bothelperRoles.add(jda.getRoleById("1146539257725464666")); // Async Tertiary (Dreadn't)
         bothelperRoles.add(jda.getRoleById("1176104225978204164")); // Async Quaternary (War Sun Tzu)
@@ -447,7 +459,7 @@ public class AsyncTI4DiscordBot {
         bothelperRoles.add(jda.getRoleById("1313965956338417784")); // ppups's Server
         bothelperRoles.add(jda.getRoleById("1311112004089548860")); // TSI's Server
         bothelperRoles.add(jda.getRoleById("1368345023745097898")); // gozer's server (marshmallow manosphere)
-        bothelperRoles.add(jda.getRoleById("1378475822528204901")); // Hadouken's Server
+        bothelperRoles.add(jda.getRoleById("1378475822528204901")); // Hadouken's Server*/
         bothelperRoles.removeIf(Objects::isNull);
     }
 
