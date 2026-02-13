@@ -351,6 +351,7 @@ public class BotLogger {
                 GlobalSettings.ImplementedSettings.BOT_LOG_WEBHOOK_URL.toString(), String.class, null);
         if (botLogWebhookURL == null) {
             System.out.println("ERROR: Unable to get url for bot-log webhook. Attempting to create one.");
+            botLogWebhookURL = System.getenv("WEBHOOK_URL");
         } else {
             return botLogWebhookURL;
         }

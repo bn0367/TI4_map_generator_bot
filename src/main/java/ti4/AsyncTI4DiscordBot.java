@@ -16,6 +16,6 @@ public class AsyncTI4DiscordBot {
         GlobalSettings.setSetting(ImplementedSettings.READY_TO_RECEIVE_COMMANDS, false);
         BotLogger.info("\n# __BOT IS STARTING UP__");
 
-        SpringApplication.run(AsyncTI4DiscordBot.class, args);
+        SpringApplication.run(AsyncTI4DiscordBot.class, System.getenv("BOT_KEY"), System.getenv("USER"), System.getenv("SERVER"));
     }
 }
