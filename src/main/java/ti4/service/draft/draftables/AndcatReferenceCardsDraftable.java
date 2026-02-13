@@ -17,7 +17,6 @@ import net.dv8tion.jda.api.events.interaction.GenericInteractionCreateEvent;
 import org.apache.commons.collections4.ListUtils;
 import ti4.buttons.Buttons;
 import ti4.helpers.AliasHandler;
-import ti4.helpers.Constants;
 import ti4.helpers.MapTemplateHelper;
 import ti4.helpers.omega_phase.PriorityTrackHelper;
 import ti4.helpers.omega_phase.PriorityTrackHelper.PriorityTrackMode;
@@ -546,9 +545,7 @@ public class AndcatReferenceCardsDraftable extends SinglePickDraftable {
                 referenceCardPackages.put(refPackage.key(), updatedPackage);
             } else {
                 BotLogger.error(
-                        new LogOrigin(game),
-                        Constants.jabberwockyPing()
-                                + " Could not find a new faction for Keleres home system assignment.");
+                        new LogOrigin(game), "Could not find a new faction for Keleres home system assignment.");
                 updatedPackage = refPackage;
             }
         } else {
@@ -591,8 +588,7 @@ public class AndcatReferenceCardsDraftable extends SinglePickDraftable {
             if (seatChoices.isEmpty()) {
                 BotLogger.error(
                         new LogOrigin(game),
-                        Constants.jabberwockyPing()
-                                + " Could not find a seat choice for player " + player.getUserID()
+                        " Could not find a seat choice for player " + player.getUserID()
                                 + " despite drafting for Seat, which should not happen. Is there some other way the players are being assigned seats?");
                 throw new IllegalStateException(
                         "No seat choice found for player " + player.getUserID() + " despite drafting for Seat.");

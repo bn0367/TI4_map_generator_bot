@@ -2,49 +2,13 @@ package ti4.helpers;
 
 import java.awt.Point;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Constants {
-    // Staff Pings
-    public static final String chassitId = "183213554445320192";
-    public static final String eronousId = "465241936408608769";
-    public static final String tspId = "150809002974904321";
-    public static final String jazzId = "228999251328368640";
-    public static final String prisonerOneId = "481860200169472030";
-    private static final String bltId = "757405214398480486";
-    public static final String gedsDeadId = "586504147746947090";
-    public static final String sigmaId = "214326507458396161";
-    public static final String bambamId = "487030345812672523";
-    public static final List<String> honoraryJazz = Arrays.asList("1153503280706625606", tspId);
-    public static final String jabberwockyId = "455013002953883651";
-    public static final String solaxId = "380689512621277185";
-
-    // Server IDs
-    public static final String ASYNCTI4_HUB_SERVER_ID = "943410040369479690";
-
-    public static String jazzPing() {
-        return "<@" + jazzId + ">";
-    }
-
-    public static String jabberwockyPing() {
-        return "<@" + jabberwockyId + ">";
-    }
-
-    public static String bltPing() {
-        return "<@" + bltId + ">";
-    }
-
-    public static String solaxPing() {
-        return "<@" + solaxId + ">";
-    }
-
     // Standard Thread Names
     public static final String NEW_PLAYER_THREAD_NAME = "Info for Players new to AsyncTI4";
 
-    // Other People IDs
-    public static final String cagesId = "203608548440014848";
-    public static final String bortId = "154000388121559040";
+    // other bot ids
     public static final String dicecordId = "572698679618568193";
 
     // other stuff
@@ -192,9 +156,6 @@ public class Constants {
     public static final String LEAVE = "leave";
     public static final String REMOVE = "remove";
     public static final String SWAP = "swap";
-    public static final String PROMOTE_TARGET = "promote_target";
-    public static final String PROMOTE_RANK = "promote_rank";
-    public static final String PROMOTE_DEMOTE = "promote_demote";
     public static final String FIN_SEPARATOR = "finSep";
 
     public static final String SET_SETTING = "setting";

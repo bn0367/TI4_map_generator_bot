@@ -24,7 +24,6 @@ import org.reflections.Reflections;
 import org.reflections.scanners.SubTypesScanner;
 import org.reflections.util.ClasspathHelper;
 import org.reflections.util.ConfigurationBuilder;
-import ti4.helpers.Constants;
 import ti4.listeners.context.ButtonContext;
 import ti4.listeners.context.ListenerContext;
 import ti4.listeners.context.ModalContext;
@@ -209,7 +208,7 @@ public class AnnotationHandler {
                 String paramString = "(" + String.join(", ", paramTypes) + ")";
                 String argsString = "(" + String.join(", ", argTypes) + ")";
 
-                String error = Constants.jazzPing() + " button handler failed. Please fix the configuration.\n";
+                String error = "Button handler failed. Please fix the configuration.\n";
                 error += "`Expected: " + methodName + paramString + "`\n";
                 error += "`Received: " + methodName + argsString + "`";
                 BotLogger.error(error, e);
@@ -242,13 +241,11 @@ public class AnnotationHandler {
         Map<String, Consumer<C>> consumers = new HashMap<>();
         try {
             if (!handlers().contains(handlerClass)) {
-                BotLogger.warning(
-                        "Unknown handler class `" + handlerClass.getName() + "`. Please fix " + Constants.jazzPing());
+                BotLogger.warning("Unknown handler class `" + handlerClass.getName());
                 return consumers;
             }
             if (!contexts().contains(contextClass)) {
-                BotLogger.warning(
-                        "Unknown context class `" + contextClass.getName() + "`. Please fix " + Constants.jazzPing());
+                BotLogger.warning("Unknown context class `" + contextClass.getName());
                 return consumers;
             }
             for (Class<?> klass : getAllClasses()) {
@@ -259,8 +256,7 @@ public class AnnotationHandler {
 
                     String methodName = klass.getName() + "." + method.getName();
                     if (!Modifier.isStatic(method.getModifiers())) {
-                        BotLogger.warning(
-                                "Method `" + methodName + "` is not static. Please fix it " + Constants.jazzPing());
+                        BotLogger.warning("Method `" + methodName + "` is not static.");
                         continue;
                     }
 
@@ -285,9 +281,9 @@ public class AnnotationHandler {
                 }
             }
         } catch (SecurityException e) {
-            BotLogger.error(Constants.jazzPing() + " bot cannot read methods in the file.", e);
+            BotLogger.error("Bot cannot read methods in the file.", e);
         } catch (Exception e) {
-            BotLogger.error(Constants.jazzPing() + " some other issue registering buttons.", e);
+            BotLogger.error("Some other issue registering buttons.", e);
         }
 
         BotLogger.info("Registered " + consumers.size() + " handlers of type " + handlerClass.getName());

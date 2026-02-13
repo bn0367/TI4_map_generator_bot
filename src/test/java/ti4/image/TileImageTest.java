@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
-import ti4.helpers.Constants;
 import ti4.helpers.Units;
 import ti4.helpers.Units.UnitKey;
 import ti4.helpers.Units.UnitType;
@@ -49,20 +48,20 @@ public class TileImageTest extends BaseTi4Test {
         testGame.setName(" Test Tile Image Generation    ");
         testGame.setCcNPlasticLimit(false);
 
-        testPlayer1 = testGame.addPlayer(Constants.jazzId, "Jazzxhands");
+        testPlayer1 = testGame.addPlayer("0", "Jazzxhands");
         FactionModel arbo = Mapper.getFaction("arborec");
         testPlayer1.setFaction(testGame, "arborec");
         testPlayer1.setColor("splitpurple");
         testPlayer1.setUnitsOwned(new HashSet<>(arbo.getUnits()));
 
-        testPlayer2 = testGame.addPlayer(Constants.tspId, "HolyTispoon");
+        testPlayer2 = testGame.addPlayer("1", "HolyTispoon");
         FactionModel cabal = Mapper.getFaction("cabal");
         testPlayer2.setFaction(testGame, "cabal");
         testPlayer2.setColor("black");
         testPlayer2.setUnitsOwned(new HashSet<>(cabal.getUnits()));
         testPlayer2.setDecalSet("cb_96");
 
-        testPlayer3 = testGame.addPlayer(Constants.chassitId, "Chassit");
+        testPlayer3 = testGame.addPlayer("2", "Chassit");
         FactionModel bastion = Mapper.getFaction("bastion");
         testPlayer3.setFaction(testGame, "bastion");
         testPlayer3.setColor("copper");

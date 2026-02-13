@@ -258,7 +258,7 @@ public class TeHelperAbilities {
             MessageHelper.editMessageWithButtons(event, message, buttons);
 
         } else {
-            MessageHelper.sendMessageToChannel(player.getCorrectChannel(), "Error " + Constants.jazzPing());
+            MessageHelper.sendMessageToChannel(player.getCorrectChannel(), "Error");
         }
     }
 
@@ -292,7 +292,7 @@ public class TeHelperAbilities {
             message += unitSummary(game, player, survivalMap);
             MessageHelper.editMessageWithButtons(event, message, buttons);
         } else {
-            MessageHelper.sendMessageToChannel(player.getCorrectChannel(), "Error " + Constants.jazzPing());
+            MessageHelper.sendMessageToChannel(player.getCorrectChannel(), "Error");
         }
     }
 
@@ -326,7 +326,7 @@ public class TeHelperAbilities {
             MessageHelper.sendMessageToChannel(player.getCorrectChannel(), msg);
             ButtonHelper.deleteMessage(event);
         } else {
-            MessageHelper.sendMessageToChannel(player.getCorrectChannel(), "Error " + Constants.jazzPing());
+            MessageHelper.sendMessageToChannel(player.getCorrectChannel(), "Error");
         }
     }
 

@@ -20,13 +20,11 @@ import net.dv8tion.jda.api.events.interaction.component.ButtonInteractionEvent;
 import net.dv8tion.jda.api.events.interaction.component.StringSelectInteractionEvent;
 import org.apache.commons.collections4.ListUtils;
 import org.apache.commons.lang3.function.Consumers;
-import ti4.helpers.Constants;
 import ti4.helpers.settingsFramework.settings.SettingInterface;
 import ti4.json.JsonMapperManager;
 import ti4.listeners.context.ListenerContext;
 import ti4.message.MessageHelper;
 import ti4.message.logging.BotLogger;
-import ti4.message.logging.LogOrigin;
 
 /**
  * <h1>Jazzxhands Menu Framework</h1>
@@ -204,11 +202,6 @@ public abstract class SettingsMenu {
     }
 
     private void buttonFailed(GenericInteractionCreateEvent event, String userMsg, boolean pingJazz) {
-        if (pingJazz) {
-            BotLogger.error(
-                    new LogOrigin(event), userMsg + "\n" + Constants.jazzPing() + " Menu Framework button has failed.");
-            userMsg += "\n> *Jazz has been pinged to take a look.*";
-        }
         if (event instanceof ButtonInteractionEvent buttonEvent)
             buttonEvent
                     .getHook()

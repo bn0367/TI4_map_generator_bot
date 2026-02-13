@@ -26,7 +26,6 @@ import org.apache.commons.lang3.function.Consumers;
 import org.jetbrains.annotations.NotNull;
 import ti4.commands.CommandHelper;
 import ti4.commands.statistics.GameStatisticsFilterer;
-import ti4.commands.uncategorized.ServerPromoteCommand;
 import ti4.cron.CronManager;
 import ti4.helpers.Constants;
 import ti4.helpers.FoWHelper;
@@ -676,28 +675,6 @@ public class AutoCompleteProvider {
                         .limit(25)
                         .sorted(Comparator.comparing(FrankenDraftMode::getAutoCompleteName))
                         .map(mode -> new Command.Choice(mode.getAutoCompleteName(), mode.toString()))
-                        .collect(Collectors.toList());
-                event.replyChoices(options).queue(Consumers.nop(), BotLogger::catchRestError);
-            }
-            case Constants.PROMOTE_TARGET -> {
-                String enteredValue = event.getFocusedOption().getValue();
-                List<Command.Choice> options = ServerPromoteCommand.Servers.keySet().stream()
-                        .filter(key -> ServerPromoteCommand.Servers.get(key)
-                                .toLowerCase()
-                                .contains(enteredValue))
-                        .limit(25)
-                        .map(key -> new Command.Choice(key, ServerPromoteCommand.Servers.get(key)))
-                        .collect(Collectors.toList());
-                event.replyChoices(options).queue(Consumers.nop(), BotLogger::catchRestError);
-            }
-            case Constants.PROMOTE_RANK -> {
-                String enteredValue = event.getFocusedOption().getValue();
-                List<Command.Choice> options = ServerPromoteCommand.Servers.keySet().stream()
-                        .filter(key -> ServerPromoteCommand.Ranks.get(key)
-                                .toLowerCase()
-                                .contains(enteredValue))
-                        .limit(25)
-                        .map(key -> new Command.Choice(key, ServerPromoteCommand.Ranks.get(key)))
                         .collect(Collectors.toList());
                 event.replyChoices(options).queue(Consumers.nop(), BotLogger::catchRestError);
             }

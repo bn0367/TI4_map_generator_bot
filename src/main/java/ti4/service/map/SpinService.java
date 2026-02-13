@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 import lombok.experimental.UtilityClass;
 import net.dv8tion.jda.api.events.interaction.GenericInteractionCreateEvent;
-import ti4.helpers.Constants;
 import ti4.helpers.RandomHelper;
 import ti4.helpers.SpinRingsHelper;
 import ti4.image.PositionMapper;
@@ -156,10 +155,7 @@ public class SpinService {
                     toSpin = ToSpin.valueOf(parts[5]);
                 }
             } catch (Exception e) {
-                BotLogger.error(
-                        new LogOrigin(game),
-                        "Failed read spin setting " + spinString + ", " + Constants.solaxPing(),
-                        e);
+                BotLogger.error(new LogOrigin(game), "Failed read spin setting " + spinString, e);
             }
 
             return new SpinSetting(center, ring, direction, steps, trigger, toSpin, game);

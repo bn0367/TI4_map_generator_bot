@@ -18,7 +18,6 @@ import ti4.buttons.Buttons;
 import ti4.helpers.ButtonHelper;
 import ti4.helpers.ButtonHelperFactionSpecific;
 import ti4.helpers.ButtonHelperTacticalAction;
-import ti4.helpers.Constants;
 import ti4.helpers.FoWHelper;
 import ti4.helpers.Helper;
 import ti4.helpers.RegexHelper;
@@ -103,7 +102,7 @@ public class TeHelperCommanders {
             message += TeHelperAbilities.unitSummary(game, player, ojzMap);
             MessageHelper.editMessageWithButtons(event, message, buttons);
         } else {
-            MessageHelper.sendMessageToChannel(player.getCorrectChannel(), "Error " + Constants.jazzPing());
+            MessageHelper.sendMessageToChannel(player.getCorrectChannel(), "Error");
         }
     }
 
@@ -139,7 +138,7 @@ public class TeHelperCommanders {
             message += TeHelperAbilities.unitSummary(game, player, ojzMap);
             MessageHelper.editMessageWithButtons(event, message, buttons);
         } else {
-            MessageHelper.sendMessageToChannel(player.getCorrectChannel(), "Error " + Constants.jazzPing());
+            MessageHelper.sendMessageToChannel(player.getCorrectChannel(), "Error");
         }
     }
 
@@ -184,7 +183,7 @@ public class TeHelperCommanders {
                 TeHelperUnits.serveLastDispatchButtons(game, player, matcher.group("pos"));
             }
         } else {
-            MessageHelper.sendMessageToChannel(player.getCorrectChannel(), "Error " + Constants.jazzPing());
+            MessageHelper.sendMessageToChannel(player.getCorrectChannel(), "Error");
         }
     }
 

@@ -16,7 +16,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.function.Consumers;
 import ti4.executors.ExecutorServiceManager;
 import ti4.helpers.AliasHandler;
-import ti4.helpers.Constants;
 import ti4.helpers.async.RoundSummaryHelper;
 import ti4.image.Mapper;
 import ti4.map.Game;
@@ -27,7 +26,6 @@ import ti4.message.MessageHelper;
 import ti4.message.logging.BotLogger;
 import ti4.service.emoji.CardEmojis;
 import ti4.service.emoji.ColorEmojis;
-import ti4.service.fow.FOWCombatThreadMirroring;
 import ti4.service.fow.WhisperService;
 import ti4.service.game.CreateGameService;
 import ti4.service.game.GameNameService;
@@ -359,7 +357,7 @@ public class MessageListener extends ListenerAdapter {
      * replicate messages in combat threads so that observers can see
      */
     private static void handleFogOfWarCombatThreadMirroring(MessageReceivedEvent event) {
-        if (!JdaService.fowServers.isEmpty()
+        /*if (!JdaService.fowServers.isEmpty()
                 && // fog servers exists
                 !JdaService.fowServers.contains(event.getGuild())
                 && // 2nd server actually exists
@@ -371,6 +369,6 @@ public class MessageListener extends ListenerAdapter {
             return;
         } // else it's probably a dev/test server, so execute
 
-        FOWCombatThreadMirroring.mirrorEvent(event);
+        FOWCombatThreadMirroring.mirrorEvent(event);*/
     }
 }

@@ -17,7 +17,6 @@ import org.apache.commons.lang3.StringUtils;
 import ti4.ResourceHelper;
 import ti4.buttons.Buttons;
 import ti4.helpers.AliasHandler;
-import ti4.helpers.Constants;
 import ti4.helpers.URLReaderHelper;
 import ti4.image.Mapper;
 import ti4.image.PositionMapper;
@@ -153,7 +152,7 @@ public class MapJsonIOService {
             mapData.setMapInfo(tiles);
             return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(mapData);
         } catch (Exception e) {
-            BotLogger.error(new LogOrigin(game), "Failed to export map to JSON " + Constants.solaxPing(), e);
+            BotLogger.error(new LogOrigin(game), "Failed to export map to JSON", e);
             return null;
         }
     }
@@ -189,7 +188,7 @@ public class MapJsonIOService {
                     "Add frontier tokens?",
                     Arrays.asList(Buttons.green("addFrontierTokens", "Yes"), Buttons.DONE_DELETE_BUTTONS));
         } catch (Exception e) {
-            BotLogger.error(new LogOrigin(game), "Failed to import map from JSON " + Constants.solaxPing(), e);
+            BotLogger.error(new LogOrigin(game), "Failed to import map from JSON", e);
             MessageHelper.sendMessageToChannel(
                     feedbackChannel,
                     "Failed to import map from JSON: " + e.getMessage() + "\n-# Solax has been pinged");

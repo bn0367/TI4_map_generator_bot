@@ -1701,14 +1701,7 @@ public class Player extends PlayerProperties {
     public String getPing() {
         User userById = getUser();
         if (userById == null) return "";
-
-        StringBuilder sb = new StringBuilder(userById.getAsMention());
-        switch (getUserID()) {
-            case Constants.bortId -> sb.append(MiscEmojis.BortWindow); // mysonisalsonamedbort
-            case Constants.tspId -> sb.append(MiscEmojis.SpoonAbides); // tispoon
-            case Constants.jazzId -> sb.append(MiscEmojis.Scout); // Jazzx
-        }
-        return sb.toString();
+        return userById.getAsMention();
     }
 
     @NotNull

@@ -3,7 +3,6 @@ package ti4.service.regex;
 import java.util.function.Consumer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import ti4.helpers.Constants;
 import ti4.message.logging.BotLogger;
 
 public class RegexService {
@@ -24,14 +23,11 @@ public class RegexService {
     }
 
     private static void defaultHandleFailure(String buttonID, String regex, Exception e) {
-        BotLogger.error(
-                "Error matching regex: " + buttonID + "\nExpected: `" + regex + "`\n" + Constants.jazzPing(), e);
+        BotLogger.error("Error matching regex: " + buttonID + "\nExpected: `" + regex + "`\n", e);
     }
 
     private static void defaultHandleFailure(String buttonID, Pattern regex, Exception e) {
-        BotLogger.error(
-                "Error matching regex: " + buttonID + "\nExpected: `" + regex.toString() + "`\n" + Constants.jazzPing(),
-                e);
+        BotLogger.error("Error matching regex: " + buttonID + "\nExpected: `" + regex.toString() + "`\n", e);
     }
 
     public static void throwFailure() throws Exception {

@@ -91,7 +91,6 @@ public class StartPhaseService {
             case "ixthian" -> IxthianArtifactService.rollIxthian(game, false);
             case "gameTitles" -> PlayerTitleHelper.offerEveryoneTitlePossibilities(game);
             case "giveAgendaButtonsBack" -> Helper.giveMeBackMyAgendaButtons(game);
-            case "finSpecialSomnoFix" -> Helper.addBotHelperPermissionsToGameChannels(event);
             case "finSpecialAbsol" -> AgendaHelper.resolveAbsolAgainstChecksNBalances(game);
             case "finSpecial" -> ButtonHelper.fixAllianceMembers(game);
             case "finFixSecrets" -> game.fixScrewedSOs();

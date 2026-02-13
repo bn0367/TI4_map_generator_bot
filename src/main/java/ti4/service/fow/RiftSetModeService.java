@@ -14,7 +14,6 @@ import ti4.helpers.AgendaHelper;
 import ti4.helpers.ButtonHelper;
 import ti4.helpers.ButtonHelperFactionSpecific;
 import ti4.helpers.ButtonHelperSCs;
-import ti4.helpers.Constants;
 import ti4.helpers.PromissoryNoteHelper;
 import ti4.helpers.RandomHelper;
 import ti4.helpers.RiftUnitsHelper;
@@ -37,7 +36,6 @@ import ti4.service.emoji.MiscEmojis;
 import ti4.service.emoji.SourceEmojis;
 import ti4.service.option.FOWOptionService.FOWOption;
 import ti4.service.relic.StellarConverterService;
-import ti4.spring.jda.JdaService;
 
 /*
  * For Eronous to run fow300
@@ -72,11 +70,6 @@ public class RiftSetModeService {
     private static final int CHANCE_TO_STELLAR_CONVERT_MIN = 5; // 1/5  = 20%
 
     public static boolean activate(GenericInteractionCreateEvent event, Game game) {
-        if (game.getPlayer(Constants.eronousId) == null && !JdaService.fowServers.isEmpty()) {
-            MessageHelper.replyToMessage(event, "Can only use RiftSetMode if Eronous is in the game.");
-            return false;
-        }
-
         if (!game.validateAndSetAgendaDeck(event, Mapper.getDeck("agendas_riftset"))) return false;
         if (!game.validateAndSetExploreDeck(event, Mapper.getDeck("explores_riftset"))) return false;
         game.discardSpecificAgenda(CRUCIBLE_AGENDA);
@@ -390,10 +383,7 @@ public class RiftSetModeService {
     }
 
     public static boolean deckInfoAvailable(Player player, Game game) {
-        if (!isActive(game)
-                || player == null
-                || Constants.eronousId.equals(player.getUserID())
-                || game.getPlayersWithGMRole().contains(player)) return true;
+        if (!isActive(game) || player == null || game.getPlayersWithGMRole().contains(player)) return true;
 
         MessageHelper.sendMessageToChannel(player.getCorrectChannel(), MiscEmojis.GravityRift.emojiString());
         return false;

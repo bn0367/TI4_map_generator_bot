@@ -18,7 +18,6 @@ import net.dv8tion.jda.api.entities.Icon;
 import net.dv8tion.jda.api.entities.emoji.ApplicationEmoji;
 import net.dv8tion.jda.api.entities.emoji.CustomEmoji;
 import org.apache.commons.collections4.SetUtils;
-import ti4.helpers.Constants;
 import ti4.helpers.Storage;
 import ti4.message.logging.BotLogger;
 import ti4.service.emoji.ApplicationEmojiCacheService.CachedEmoji;
@@ -195,7 +194,7 @@ public class ApplicationEmojiService {
                     .flatMap(v -> JdaService.jda.createApplicationEmoji(name, emojiIcon))
                     .complete();
         } catch (Exception e) {
-            BotLogger.error(Constants.jazzPing() + " Failed to upload emoji file: " + name, e);
+            BotLogger.error("Failed to upload emoji file: " + name, e);
             return null;
         }
     }
@@ -216,7 +215,7 @@ public class ApplicationEmojiService {
             }
             return success;
         } catch (Exception e) {
-            BotLogger.error(Constants.jazzPing() + " Failed to upload emoji files: ", e);
+            BotLogger.error("Failed to upload emoji files: ", e);
             return false;
         }
     }
@@ -303,7 +302,7 @@ public class ApplicationEmojiService {
     private static void pushEmojiListToCache(boolean isHealthy) {
         if (spoofing) return;
         if (!isHealthy) {
-            BotLogger.warning(Constants.jazzPing() + " - Uploading failed, reinitializing cache from Discord.");
+            BotLogger.warning("Uploading failed, reinitializing cache from Discord.");
             resetCacheFromDiscord();
         } else {
             pushEmojiListToCache();

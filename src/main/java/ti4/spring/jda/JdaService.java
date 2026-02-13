@@ -43,7 +43,6 @@ import ti4.cron.UploadStatsCron;
 import ti4.cron.WinningPathCron;
 import ti4.executors.ExecutorServiceManager;
 import ti4.helpers.AliasHandler;
-import ti4.helpers.Constants;
 import ti4.helpers.Storage;
 import ti4.helpers.TIGLHelper;
 import ti4.image.MapRenderPipeline;
@@ -398,7 +397,6 @@ public class JdaService {
         // are still in
         if (guild == null) return false;
         if (System.getenv("TESTING") != null) return false;
-        if (guild.getId().equals(Constants.ASYNCTI4_HUB_SERVER_ID)) return false;
 
         // Disable this for now
         if (true) return false;
@@ -432,81 +430,20 @@ public class JdaService {
      */
     private static void initializeWhitelistedRoles() {
         // ADMIN ROLES
-        adminRoles.add(jda.getRoleById("943596173896323072")); // Async Primary (Hub)
-        adminRoles.add(jda.getRoleById("1090914497352446042")); // Async Secondary (Stroter's Paradise)
-        adminRoles.add(jda.getRoleById("1146511484264906814")); // Async Tertiary (Dreadn't)
-        adminRoles.add(jda.getRoleById("1176104225978204167")); // Async Quaternary (War Sun Tzu)
-        adminRoles.add(jda.getRoleById("1209956332380229678")); // Async Quinary (Fighter Club)
-        adminRoles.add(jda.getRoleById("1250131684393881616")); // Async Senary (Tommer Hawk)
-        adminRoles.add(jda.getRoleById("1312882116597518422")); // Async Septenary (Duder's Domain)
-        adminRoles.add(jda.getRoleById("1378702133297414170")); // Async Octonary (What's up Dock)
-        adminRoles.add(jda.getRoleById("1410728648817770532")); // Async Nonary (Ship Flag)
-        adminRoles.add(jda.getRoleById("1434632452097446046")); // Async Tourney
-        adminRoles.add(jda.getRoleById("1434180793139204204")); // Async Decenary (Great Carrier Reef)
-        adminRoles.add(jda.getRoleById("1434181175944941655")); // Async Undenary (PDStrians)
-        adminRoles.add(jda.getRoleById("1458844879709929540")); // Async Duodenary (Stroaty McStroatface)
-        adminRoles.add(jda.getRoleById("1458845770672377997")); // Async Tredenary (Planetary Duck System)
-        adminRoles.add(jda.getRoleById("1458845518393246040")); // Async Quadrodenary (Dannel's Camp Ground)
-        adminRoles.add(jda.getRoleById("1062804021385105500")); // FoW Server
-        adminRoles.add(jda.getRoleById("1429853811899502675")); // FoW Server Chapter 2
-        adminRoles.add(jda.getRoleById("951230650680225863")); // Community Server
-        adminRoles.add(jda.getRoleById("1218342096474341396")); // Megagame Server
-        adminRoles.add(jda.getRoleById("1067866210865250445")); // PrisonerOne's Test Server
-        adminRoles.add(jda.getRoleById("1443842222922530929")); // Spice & Thyme's Server
-        adminRoles.add(jda.getRoleById("1060656344581017621")); // Softnum's Server
-        adminRoles.add(jda.getRoleById("1109657180170371182")); // Jazz's Server
-        adminRoles.add(jda.getRoleById("1100120742093406319")); // Moo's Server
-        adminRoles.add(jda.getRoleById("1126610851034583050")); // Fin's Server
-        adminRoles.add(jda.getRoleById("824111008863092757")); // Fireseal's Server
-        adminRoles.add(jda.getRoleById("336194595501244417")); // tedw4rd's Server
-        adminRoles.add(jda.getRoleById("1178659621225889875")); // Jepp2078's Server
-        adminRoles.add(jda.getRoleById("1215451631622164610")); // Sigma's Server
-        adminRoles.add(jda.getRoleById("1225597324206800996")); // ForlornGeas's Server
-        adminRoles.add(jda.getRoleById("1226068025464197160")); // Rintsi's Server
-        adminRoles.add(jda.getRoleById("1226805374007640095")); // Solax's Server
-        adminRoles.add(jda.getRoleById("1313965793532186725")); // ppups's Server
-        adminRoles.add(jda.getRoleById("1311111853912358922")); // TSI's Server
-        adminRoles.add(jda.getRoleById("1368344911103000728")); // gozer's server (marshmallow manosphere)
-        adminRoles.add(jda.getRoleById("1378475691531567185")); // Hadouken's Server
-        adminRoles.add(jda.getRoleById("1149705227625316352")); // Will's server
-        adminRoles.add(jda.getRoleById("1335330636935987343")); // Jabberwocky's server
-        adminRoles.add(jda.getRoleById("1465619434839347276")); // Ariel's server
+        var envAdminRoles = System.getenv("ADMIN_ROLES").split(",");
+        for (var adminRole : envAdminRoles) {
+            adminRoles.add(jda.getRoleById(adminRole));
+        }
 
         adminRoles.removeIf(Objects::isNull);
 
         // DEVELOPER ROLES
 
         developerRoles.addAll(adminRoles); // admins may also execute developer commands
-        developerRoles.add(jda.getRoleById("947648366056185897")); // Async Primary (Hub)
-        developerRoles.add(jda.getRoleById("1090958278479052820")); // Async Secondary (Stroter's Paradise)
-        developerRoles.add(jda.getRoleById("1146529125184581733")); // Async Tertiary (Dreadn't)
-        developerRoles.add(jda.getRoleById("1176104225978204166")); // Async Quaternary (War Sun Tzu)
-        developerRoles.add(jda.getRoleById("1209956332380229677")); // Async Quinary (Fighter Club)
-        developerRoles.add(jda.getRoleById("1250131684393881615")); // Async Senary (Tommer Hawk)
-        developerRoles.add(jda.getRoleById("1312882116597518421")); // Async Septenary (Duder's Domain)
-        developerRoles.add(jda.getRoleById("1378702133297414169")); // Async Octonary (What's up Dock)
-        developerRoles.add(jda.getRoleById("1410728648817770531")); // Async Nonary (Ship Flag)
-        developerRoles.add(jda.getRoleById("1434632452097446045")); // Async Tourney
-        developerRoles.add(jda.getRoleById("1434180793139204203")); // Async Decenary (Great Carrier Reef)
-        developerRoles.add(jda.getRoleById("1434181175944941654")); // Async Undenary (PDStrians)
-        developerRoles.add(jda.getRoleById("1458844879709929538")); // Async Duodenary (Stroaty McStroatface)
-        developerRoles.add(jda.getRoleById("1458845770672377995")); // Async Tredenary (Planetary Duck System)
-        developerRoles.add(jda.getRoleById("1458845518393246038")); // Async Quadrodenary (Dannel's Camp Ground)
-        developerRoles.add(jda.getRoleById("1088532767773564928")); // FoW Server
-        developerRoles.add(jda.getRoleById("1429853811882594528")); // FoW Server Chapter 2
-        developerRoles.add(jda.getRoleById("1395072365389680711")); // Megagame Server
-        developerRoles.add(jda.getRoleById("1172651397397880832")); // PrisonerOne's Test Server
-        developerRoles.add(jda.getRoleById("1215453013154734130")); // Sigma's Server
-        developerRoles.add(jda.getRoleById("1225597362186223746")); // ForlornGeas's Server
-        developerRoles.add(jda.getRoleById("1226068105071956058")); // Rintsi's Server
-        developerRoles.add(jda.getRoleById("1226805601422676069")); // Solax's Server
-        developerRoles.add(jda.getRoleById("1313966002551128166")); // ppups's Server
-        developerRoles.add(jda.getRoleById("1311111944832553090")); // TSI's Server
-        developerRoles.add(jda.getRoleById("1368344979579338762")); // gozer's server (marshmallow manosphere)
-        developerRoles.add(jda.getRoleById("1378475796301217792")); // Hadouken's Server
-        developerRoles.add(jda.getRoleById("1406188584163213332")); // Will's server
-        developerRoles.add(jda.getRoleById("1335330959767375902")); // Jabberwocky's server
-        developerRoles.add(jda.getRoleById("1465619572718567526")); // Ariel's server
+        var envDeveloperRoles = System.getenv("DEVELOPER_ROLES").split(",");
+        for (var developerRole : envDeveloperRoles) {
+            developerRoles.add(jda.getRoleById(developerRole));
+        }
 
         developerRoles.removeIf(Objects::isNull);
 
@@ -514,39 +451,10 @@ public class JdaService {
 
         bothelperRoles.addAll(developerRoles); // developers may also execute bothelper commands
         bothelperRoles.addAll(adminRoles); // admins can also execute bothelper commands
-        bothelperRoles.add(jda.getRoleById("1166011604488425482")); // Async Primary (Hub)
-        bothelperRoles.add(jda.getRoleById("1090914992301281341")); // Async Secondary (Stroter's Paradise)
-        bothelperRoles.add(jda.getRoleById("1146539257725464666")); // Async Tertiary (Dreadn't)
-        bothelperRoles.add(jda.getRoleById("1176104225978204164")); // Async Quaternary (War Sun Tzu)
-        bothelperRoles.add(jda.getRoleById("1209956332380229675")); // Async Quinary (Fighter Club)
-        bothelperRoles.add(jda.getRoleById("1250131684393881613")); // Async Senary (Tommer Hawk)
-        bothelperRoles.add(jda.getRoleById("1312882116597518419")); // Async Septenary (Duder's Domain)
-        bothelperRoles.add(jda.getRoleById("1378702133297414167")); // Async Octonary (What's up Dock)
-        bothelperRoles.add(jda.getRoleById("1410728648817770529")); // Async Nonary (Ship Flag)
-        bothelperRoles.add(jda.getRoleById("1434632452097446043")); // Async Tourney
-        bothelperRoles.add(jda.getRoleById("1434180793139204201")); // Async Decenary (Great Carrier Reef)
-        bothelperRoles.add(jda.getRoleById("1434181175944941652")); // Async Undenary (PDStrians)
-        bothelperRoles.add(jda.getRoleById("1458844879709929536")); // Async Duodenary (Stroaty McStroatface)
-        bothelperRoles.add(jda.getRoleById("1458845770672377993")); // Async Tredenary (Planetary Duck System)
-        bothelperRoles.add(jda.getRoleById("1458845518393246036")); // Async Quadrodenary (Dannel's Camp Ground)
-        bothelperRoles.add(jda.getRoleById("1088532690803884052")); // FoW Server
-        bothelperRoles.add(jda.getRoleById("1063464689218105354")); // FoW Server Game Admin
-        bothelperRoles.add(jda.getRoleById("1429853811891241128")); // FoW Server Chapter 2 Bothelper
-        bothelperRoles.add(jda.getRoleById("1429853811891241129")); // FoW Server Chapter 2 Game Supervisor
-        bothelperRoles.add(jda.getRoleById("1248693989193023519")); // Community Server
-        bothelperRoles.add(jda.getRoleById("1395072619417436183")); // Megagame Server
-        bothelperRoles.add(jda.getRoleById("1225597399385374781")); // ForlornGeas's Server
-        bothelperRoles.add(jda.getRoleById("1131925041219653714")); // Jonjo's Server
-        bothelperRoles.add(jda.getRoleById("1215450829096624129")); // Sigma's Server
-        bothelperRoles.add(jda.getRoleById("1226068245010710558")); // Rintsi's Server
-        bothelperRoles.add(jda.getRoleById("1226805674046914560")); // Solax's Server
-        bothelperRoles.add(jda.getRoleById("1313965956338417784")); // ppups's Server
-        bothelperRoles.add(jda.getRoleById("1311112004089548860")); // TSI's Server
-        bothelperRoles.add(jda.getRoleById("1368345023745097898")); // gozer's server (marshmallow manosphere)
-        bothelperRoles.add(jda.getRoleById("1378475822528204901")); // Hadouken's Server
-        bothelperRoles.add(jda.getRoleById("1150031360610799676")); // Will's server
-        bothelperRoles.add(jda.getRoleById("1335331011147595929")); // Jabberwocky's Server
-        bothelperRoles.add(jda.getRoleById("1465619810577678442")); // Ariel's server
+        var envBothelperRoles = System.getenv("ADMIN_ROLES").split(",");
+        for (var bothelperRole : envBothelperRoles) {
+            bothelperRoles.add(jda.getRoleById(bothelperRole));
+        }
 
         bothelperRoles.removeIf(Objects::isNull);
     }

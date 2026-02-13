@@ -29,7 +29,6 @@ import net.dv8tion.jda.api.utils.FileUpload;
 import net.dv8tion.jda.api.utils.messages.MessageCreateBuilder;
 import net.dv8tion.jda.api.utils.messages.MessageCreateData;
 import org.apache.commons.lang3.StringUtils;
-import ti4.helpers.Constants;
 import ti4.helpers.StringHelper;
 import ti4.message.MessageHelper;
 import ti4.message.logging.BotLogger;
@@ -170,9 +169,9 @@ public class MessageV2Builder {
             List<String> componentTrees = combinedComponents.stream()
                     .map(msg -> ComponentTypeTree(msg.getComponentTree()))
                     .collect(Collectors.toList());
-            BotLogger.warning(Constants.jabberwockyPing()
-                    + " Someone attempted to send a v2 message that is split beyond the maximum. Message not sent.\n"
-                    + String.join("\n---\n", componentTrees));
+            BotLogger.warning(
+                    "Someone attempted to send a v2 message that is split beyond the maximum. Message not sent.\n"
+                            + String.join("\n---\n", componentTrees));
             return;
         }
         MessageHelper.sendMessagesWithRetry(channel, combinedComponents, null, "Failed to send v2 message", 1);

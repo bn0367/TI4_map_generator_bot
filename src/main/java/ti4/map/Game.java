@@ -484,9 +484,7 @@ public class Game extends GameProperties {
                     miltySettings = new MiltySettings(this, json);
                 } catch (Exception e) {
                     BotLogger.error(
-                            new LogOrigin(this),
-                            "Failed loading milty draft settings for `" + getName() + "` " + Constants.jazzPing(),
-                            e);
+                            new LogOrigin(this), "Failed loading milty draft settings for `" + getName() + "` ", e);
                     MessageHelper.sendMessageToChannel(
                             getActionsChannel(), "Milty draft settings failed to load. Resetting to default.");
                     miltySettings = new MiltySettings(this, null);
@@ -510,10 +508,7 @@ public class Game extends GameProperties {
                     draftSystemSettings = new DraftSystemSettings(this, json);
                 } catch (Exception e) {
                     BotLogger.error(
-                            new LogOrigin(this),
-                            "Failed loading draft system settings for `" + getName() + "` "
-                                    + Constants.jabberwockyPing(),
-                            e);
+                            new LogOrigin(this), "Failed loading draft system settings for `" + getName() + "` ", e);
                     MessageHelper.sendMessageToChannel(
                             getActionsChannel(), "Draft system settings failed to load. Resetting to default.");
                     draftSystemSettings = new DraftSystemSettings(this, null);

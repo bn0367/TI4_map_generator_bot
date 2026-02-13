@@ -13,7 +13,6 @@ import net.dv8tion.jda.api.events.interaction.component.ButtonInteractionEvent;
 import ti4.buttons.Buttons;
 import ti4.helpers.AliasHandler;
 import ti4.helpers.ButtonHelper;
-import ti4.helpers.Constants;
 import ti4.helpers.DiceHelper.Die;
 import ti4.helpers.DisasterWatchHelper;
 import ti4.helpers.Helper;
@@ -150,7 +149,7 @@ public class SilverFlameService {
         Tile homeSystem = player.getHomeSystemTile();
         if (homeSystem == null) {
             MessageHelper.sendMessageToChannel(player.getCorrectChannel(), "Where the heck is your home system???");
-            BotLogger.error(Constants.jazzPing() + " Missing Home System");
+            BotLogger.error("Missing Home System");
             return;
         }
 

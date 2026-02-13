@@ -50,7 +50,6 @@ import ti4.helpers.CalendarHelper;
 import ti4.helpers.Constants;
 import ti4.helpers.FoWHelper;
 import ti4.helpers.Helper;
-import ti4.helpers.RandomHelper;
 import ti4.helpers.RelicHelper;
 import ti4.helpers.Storage;
 import ti4.helpers.Units.UnitKey;
@@ -2145,11 +2144,7 @@ class PlayerAreaGenerator {
                 || player.hasLeaderUnlocked("xxchahero")) { // XXCHA WITH UNLOCKED HERO
             int availablePlayerResources = Helper.getPlayerResourcesAvailable(player, game);
             int totalPlayerResources = Helper.getPlayerResourcesTotal(player, game);
-            if (Constants.gedsDeadId.equals(player.getUserID()) || RandomHelper.isOneInX(100)) {
-                drawPAImageOpaque(x + deltaX - 2, y - 2, "pa_resinf_info_xxcha_gedsdead.png", 0.9f);
-            } else {
-                drawPAImageOpaque(x + deltaX - 2, y - 2, "pa_resinf_info_xxcha.png", 0.9f);
-            }
+            drawPAImageOpaque(x + deltaX - 2, y - 2, "pa_resinf_info_xxcha.png", 0.9f);
             drawFactionIconImageOpaque(graphics, "xxcha", x + deltaX + 75 - 94 / 2, y + 75 - 94 / 2, 95, 95, 0.15f);
             graphics.setColor(Color.WHITE);
             DrawingUtil.drawCenteredString(
@@ -2225,7 +2220,6 @@ class PlayerAreaGenerator {
 
             // FLEX
             graphics.setColor(Color.WHITE);
-            if (Constants.cagesId.equals(player.getUserID())) graphics.setColor(Color.decode("#f616ce"));
             DrawingUtil.drawCenteredString(
                     graphics,
                     String.valueOf(availablePlayerFlex),
