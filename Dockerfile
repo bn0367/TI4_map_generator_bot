@@ -28,4 +28,6 @@ COPY --from=build /opt/app/target/TI4_map_generator_discord_bot-1.0-SNAPSHOT.jar
 ENV DB_PATH=/opt/STORAGE
 ENV RESOURCE_PATH=/opt/resources
 
+COPY tibot.db /opt/STORAGE/tibot.db
+
 ENTRYPOINT ["java", "-jar", "-XX:MaxRAMPercentage=90.0", "-XX:InitialRAMPercentage=30.0", "-XX:+UseStringDeduplication", "tibot.jar"]
