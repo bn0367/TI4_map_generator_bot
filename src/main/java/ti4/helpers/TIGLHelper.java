@@ -125,7 +125,7 @@ public class TIGLHelper {
 
     public static boolean validateTIGLness() {
         String testing = System.getenv("TESTING");
-        if (testing != null) return false;
+        if (testing != null || System.getenv("ADMIN_ROLES") != null) return false;
 
         boolean tiglProblem = false;
         if (getTIGLChannel() == null) {
