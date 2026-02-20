@@ -352,6 +352,9 @@ public class BotLogger {
         if (botLogWebhookURL == null) {
             System.out.println("ERROR: Unable to get url for bot-log webhook. Attempting to create one.");
             botLogWebhookURL = System.getenv("WEBHOOK_URL");
+            if (botLogWebhookURL != null) {
+                return botLogWebhookURL;
+            }
         } else {
             return botLogWebhookURL;
         }
